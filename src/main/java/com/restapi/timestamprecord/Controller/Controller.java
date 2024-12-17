@@ -17,17 +17,21 @@ public class Controller {
         this.recordService = recordService;
     }
 
+    // for adding user in database
     @PostMapping("/add")
     public ResponseEntity<String> addUser(@RequestBody User user){
         userService.addUser(user);
         return ResponseEntity.ok("Added successfully");
     }
 
+    // showing all users from database
     @GetMapping("/all")
     public List<User> findAllUser(){
        return userService.findUser();
     }
 
+
+    // save time stamp when id is post
     @PostMapping("/{id}")
     public ResponseEntity<String> updateTimestamp(@PathVariable Long id) {
         String response = recordService.saveTimestamp(id);
